@@ -1,0 +1,10 @@
+.addons{
+    @include directionY;
+    margin: 0 0.5rem 0 0.5rem;
+    h1{
+        margin-bottom: 0;
+    }
+    p{
+        margin-top: 0;
+    }
+}

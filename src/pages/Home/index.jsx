@@ -6,6 +6,8 @@ import { Skeleton } from '@mui/material';
 
 import { selectLoading } from '@containers/App/selectors';
 
+import AddOns from '@components/Add-Ons';
+import Sidebar from '@components/Sidebar';
 import classes from './style.module.scss';
 
 const Home = ({ loading, intl: { formatMessage } }) => {
@@ -19,10 +21,7 @@ const Home = ({ loading, intl: { formatMessage } }) => {
   }
   return (
     <div className={classes.wrapper}>
-      <h3>
-        <FormattedMessage id="app_greeting_1" values={{ name: 'PhinSquad' }} />
-      </h3>
-      <p>{formatMessage({ id: 'app_greeting_2' })}</p>
+      <Sidebar />
     </div>
   );
 };
