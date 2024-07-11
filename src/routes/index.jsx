@@ -2,6 +2,7 @@ import MainLayout from '@layouts/MainLayout';
 
 import Home from '@pages/Home';
 import NotFound from '@pages/NotFound';
+import SampleSelectPlan from '@pages/SampleSelectPlan';
 
 const routes = [
   {
@@ -9,6 +10,13 @@ const routes = [
     name: 'Home',
     protected: false,
     component: Home,
+    layout: MainLayout,
+  },
+  {
+    path: '/sample-select-plan',
+    name: 'Sample Select Plan',
+    protected: false,
+    component: SampleSelectPlan,
     layout: MainLayout,
   },
 

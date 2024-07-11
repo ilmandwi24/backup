@@ -1,0 +1,103 @@
+.container {
+  background-color: rgb(252, 248, 241);
+  max-width: 345px;
+  padding: 1.5rem 1.5rem 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  // height: 500px;
+  h1 {
+    font-size: 24px;
+    margin: 0;
+    padding: 0;
+  }
+  p {
+    width: 90%;
+  }
+  .listPlan {
+    margin: 0;
+    
+    // background-color: aquamarine;
+
+    .plan {
+      margin-bottom: 1rem;
+      padding: 1rem 1rem 1rem 1rem;
+    //   background-color: blanchedalmond;
+      border: 1px hsl(229, 24%, 87%) solid;
+      border-radius: 7px;
+      display: flex;
+    //   max-width: 95.5%;
+      .icon {
+        flex-basis: 45px;
+      }
+      .desc {
+        padding: 0px 7px;
+        flex-grow: 1;
+        // padding: 0;
+        h3 {
+          margin: 0;
+          font-size: 16px;
+        }
+        .price {
+          display: block;
+          color: gray;
+          line-height: 1.5;
+          font-size: 15px;
+        }
+        .free {
+          display: block;
+          font-size: 14px;
+          font-weight: 500;
+        }
+      }
+    }
+
+    .active {
+      border: 1px hsl(213, 96%, 18%) solid;
+    }
+
+    .combined-class {
+      @extend .plan;
+      @extend .active;
+    }
+  }
+
+  .switch {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    // background-color:red;
+  }
+}
+
+@include apply-at-xxl-size {
+  .container {
+    max-width: 450px;   
+    // flex-direction: row;
+    padding: 0;
+    p {
+      width: 100%;
+      font-size: 15px;
+      color: gray;
+      font-weight: 500;
+      margin-top:10px;
+    }
+    .listPlan {
+      gap:10px;
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 20px ;
+      .plan{
+        padding: 20px 15px 0 15px;
+        min-width: 100px;
+        flex-direction: column;
+        gap: 25px;
+        padding-bottom: 10px;
+      }
+    }
+  }
+}
