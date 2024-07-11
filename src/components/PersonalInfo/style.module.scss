@@ -1,0 +1,32 @@
+.containerPersonal {
+  //   background-color: white;
+  font-family: Poppins, Arial, sans-serif;
+
+  .formWrapper {
+    @include directionY;
+  }
+
+  .formWrapper small {
+    margin-top: -30px;
+  }
+
+  .formControl {
+    padding-top: 20px;
+  }
+
+  .formControl form {
+    @include directionY;
+    gap: 10px;
+    padding-bottom: 20px;
+  }
+
+  .personalButton {
+    @include directionX;
+    justify-content: end;
+  }
+}
+
+.labelControl {
+  @include directionX;
+  justify-content: space-between;
+}

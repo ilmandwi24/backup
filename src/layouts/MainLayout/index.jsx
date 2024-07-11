@@ -6,11 +6,12 @@ import { createStructuredSelector } from 'reselect';
 import { selectLocale, selectTheme } from '@containers/App/selectors';
 
 import Navbar from '@components/Navbar';
+import classes from './style.module.scss';
 
-const MainLayout = ({ children, locale, theme, intl: { formatMessage } }) => (
-  <div>
-    <Navbar title={formatMessage({ id: 'app_title_header' })} locale={locale} theme={theme} />
-    {children}
+const MainLayout = ({ children, locale, theme }) => (
+  <div className={classes.container}>
+    <Navbar locale={locale} theme={theme} />
+    <div className={classes.children}>{children}</div>
   </div>
 );
 
@@ -23,7 +24,6 @@ MainLayout.propTypes = {
   children: PropTypes.element.isRequired,
   locale: PropTypes.string,
   theme: PropTypes.string,
-  intl: PropTypes.object,
 };
 
 export default injectIntl(connect(mapStateToProps)(MainLayout));

@@ -1,6 +1,10 @@
 @import '@styles/base';
 
 .wrapper {
-  // margin: auto 2px;
-  padding: 1rem;
+  width: 100%;
+  @include directionX;
+  justify-content: space-evenly;
+  align-items: stretch;
+  gap: 10px;
+  padding: 10px;
 }
