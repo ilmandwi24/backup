@@ -72,4 +72,14 @@ export default {
   app_thank_payment: 'Thank you!',
   app_thank_description:
     'Thanks for confirming your subscription! We hope you have fun using our platform. If you ever need support, please feel free to email us at {email}.',
+
+  // Validation
+  this_field_is_required: 'This field is required',
+  email_validation: 'Email must be a valid',
+  phone_validation: 'Phone number must be at least 12',
+
+  // Placeholder
+  info_name_placeholder: 'e.g. Stephen King',
+  info_email_placeholder: 'e.g. stephenking@lorem.com',
+  info_phone_placeholder: 'e.g. +123-456-7890',
 };
