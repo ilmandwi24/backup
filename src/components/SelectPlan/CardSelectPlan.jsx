@@ -6,7 +6,7 @@ import { injectIntl } from 'react-intl';
 import { selectSelectPlan } from '@containers/App/selectors';
 import { createStructuredSelector } from 'reselect';
 import { connect, useDispatch } from 'react-redux';
-import { updateYearlySelectPlan, setStepBack, setStepNext } from '@containers/App/actions';
+import { updateYearlySelectPlan, setPackageSelectPlan, setStepBack, setStepNext } from '@containers/App/actions';
 import { useState } from 'react';
 import classes from './csp.module.scss';
 
@@ -74,7 +74,10 @@ const CardSelectPlan = ({ intl: { formatMessage }, selectPlan }) => {
       <p>{formatMessage({ id: 'app_select_plan_description' })}</p>
       {/* List package */}
       <Box className={classes.listPlan}>
-        <Box className={`${classes.plan} ${paket === 1 ? classes.active : ''}`} onClick={() => setPaket(1)}>
+        <Box
+          className={`${classes.plan} ${selectPlan.paket === 'arcade' ? classes.active : ''}`}
+          onClick={() => dispatch(setPackageSelectPlan('arcade'))}
+        >
           <Box className={classes.icon}>
             <span>
               <img src="src/static/images/icon-arcade.svg" alt="icon arcade" />
@@ -90,7 +93,10 @@ const CardSelectPlan = ({ intl: { formatMessage }, selectPlan }) => {
             {selectPlan.tahunan && <span className={classes.free}>{formatMessage({ id: 'app_2months' })}</span>}
           </Box>
         </Box>
-        <Box className={`${classes.plan} ${paket === 2 ? classes.active : ''}`} onClick={() => setPaket(2)}>
+        <Box
+          className={`${classes.plan} ${selectPlan.paket === 'advanced' ? classes.active : ''}`}
+          onClick={() => dispatch(setPackageSelectPlan('advanced'))}
+        >
           <Box className={classes.icon}>
             <span>
               <img src="src/static/images/icon-advanced.svg" alt="icon arcade" />
@@ -106,7 +112,10 @@ const CardSelectPlan = ({ intl: { formatMessage }, selectPlan }) => {
             {selectPlan.tahunan && <span className={classes.free}>{formatMessage({ id: 'app_2months' })}</span>}
           </Box>
         </Box>
-        <Box className={`${classes.plan} ${paket === 3 ? classes.active : ''}`} onClick={() => setPaket(3)}>
+        <Box
+          className={`${classes.plan} ${selectPlan.paket === 'pro' ? classes.active : ''}`}
+          onClick={() => dispatch(setPackageSelectPlan('pro'))}
+        >
           <Box className={classes.icon}>
             <span>
               <img src="src/static/images/icon-pro.svg" alt="icon arcade" />
