@@ -6,14 +6,14 @@ import { injectIntl } from 'react-intl';
 import { selectSelectPlan } from '@containers/App/selectors';
 import { createStructuredSelector } from 'reselect';
 import { connect, useDispatch } from 'react-redux';
-import { updateYearlySelectPlan } from '@containers/App/actions';
+import { updateYearlySelectPlan, setStepBack, setStepNext } from '@containers/App/actions';
 import { useState } from 'react';
 import classes from './csp.module.scss';
 
 const CardSelectPlan = ({ intl: { formatMessage }, selectPlan }) => {
   const [paket, setPaket] = useState(0);
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
   const CustomSwitch = styled((props) => <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />)(
     ({ theme }) => ({
       width: 38,
@@ -61,8 +61,13 @@ const CardSelectPlan = ({ intl: { formatMessage }, selectPlan }) => {
       },
     })
   );
-  // console.log(selectPlan);
-  // const isActive = true;
+
+  const handleBack = () => {
+    dispatch(setStepBack());
+  };
+  const handleNext = () => {
+    dispatch(setStepNext());
+  };
   return (
     <Box className={classes.container}>
       <h1>{formatMessage({ id: 'app_select_your_plan' })}</h1>
@@ -128,11 +133,10 @@ const CardSelectPlan = ({ intl: { formatMessage }, selectPlan }) => {
         />
         {formatMessage({ id: 'app_plan_yearly' })}
       </Box>
-
-      <Box className={classes.buttonStep}>
-        <ButtonStep message={formatMessage({ id: 'button_goback' })} />
-        <ButtonStep message={formatMessage({ id: 'button_nextstep' })} typevariant="contained" />
-      </Box>
+      <div className={classes.button}>
+        <ButtonStep message={formatMessage({ id: 'button_goback' })} click={handleBack} />
+        <ButtonStep message={formatMessage({ id: 'button_nextstep' })} typevariant="contained" click={handleNext} />
+      </div>
     </Box>
   );
 };

@@ -6,9 +6,12 @@ import PropTypes from 'prop-types';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { setStepNext } from '@containers/App/actions';
 import classes from './style.module.scss';
 
 const PersonalInfo = ({ intl: { formatMessage } }) => {
+  const dispatch = useDispatch();
   const schema = yup
     .object()
     .shape({
@@ -29,8 +32,8 @@ const PersonalInfo = ({ intl: { formatMessage } }) => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = () => {
+    dispatch(setStepNext());
   };
 
   return (
@@ -126,7 +129,7 @@ const PersonalInfo = ({ intl: { formatMessage } }) => {
           />
 
           <div className={classes.personalButton}>
-            <ButtonStep message="button_step" />
+            <ButtonStep message="button_nextstep" typevariant="contained" />
           </div>
         </form>
       </div>

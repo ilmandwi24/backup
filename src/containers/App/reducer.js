@@ -7,6 +7,8 @@ import {
   SET_LOADING,
   SET_COUNTRY_LIST,
   SET_YEARLY_SELECT_PLAN,
+  SET_STEPNEXT,
+  SET_STEPBACK,
 } from '@containers/App/constants';
 
 export const initialState = {
@@ -23,6 +25,7 @@ export const initialState = {
     paket: 0,
     tahunan: false,
   },
+  step: 1,
 };
 
 export const storedKey = ['locale', 'theme'];
@@ -47,6 +50,13 @@ const appReducer = (state = initialState, action) =>
         break;
       case SET_YEARLY_SELECT_PLAN:
         draft.selectPlan = { ...draft.selectPlan, tahunan: !action.yearly };
+        break;
+      case SET_STEPNEXT:
+        draft.step += 1;
+        break;
+      case SET_STEPBACK:
+        draft.step -= 1;
+        break;
     }
   });
 

@@ -1,11 +1,31 @@
+import ButtonStep from '@components/Button';
 import { Box, Card, CardContent, Divider, Typography } from '@mui/material';
 import { useState } from 'react';
 
+import { useDispatch } from 'react-redux';
+import { setStepBack } from '@containers/App/actions';
+import classes from './style.module.scss';
+
 const CountPayment = () => {
+  const dispatch = useDispatch();
   const [format, setFormat] = useState('month');
+  const handleBack = () => {
+    dispatch(setStepBack());
+  };
+  const handleConfirm = () => {
+    console.log('confirm');
+  };
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
-      <Card sx={{ paddingY: '1rem', backgroundColor: 'hsl(217, 100%, 97%)', boxShadow: 'none' }}>
+      <Card
+        sx={{
+          paddingY: '1rem',
+          backgroundColor: 'hsl(217, 100%, 97%)',
+          boxShadow: 'none',
+          width: '500px',
+          marginTop: '1rem',
+        }}
+      >
         <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <Box>
@@ -44,7 +64,7 @@ const CountPayment = () => {
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          marginTop: '1rem',
+          marginTop: '2rem',
           padding: '0 1rem',
         }}
       >
@@ -55,6 +75,10 @@ const CountPayment = () => {
           +$20/{format === 'month' ? 'mo' : 'yr'}
         </Typography>
       </Box>
+      <div className={classes.button}>
+        <ButtonStep message="button_goback" click={handleBack} />
+        <ButtonStep message="button_confirm" click={handleConfirm} typevariant="contained" />
+      </div>
     </Box>
   );
 };
