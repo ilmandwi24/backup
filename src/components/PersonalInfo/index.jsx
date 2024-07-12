@@ -32,11 +32,7 @@ const PersonalInfo = ({ intl: { formatMessage } }) => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
-  };
-
-  const handleNextButton = () => {
+  const onSubmit = () => {
     dispatch(setStepNext());
   };
 
@@ -133,7 +129,7 @@ const PersonalInfo = ({ intl: { formatMessage } }) => {
           />
 
           <div className={classes.personalButton}>
-            <ButtonStep message="button_nextstep" click={handleNextButton} typevariant="contained" />
+            <ButtonStep message="button_nextstep" typevariant="contained" />
           </div>
         </form>
       </div>
