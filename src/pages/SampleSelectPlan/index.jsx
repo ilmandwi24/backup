@@ -6,7 +6,7 @@ import { Skeleton } from '@mui/material';
 
 import { selectLoading } from '@containers/App/selectors';
 
-import CardSelectPlan from '@components/CardSelectPlan';
+import CardSelectPlan from '@components/SelectPlan/CardSelectPlan';
 import classes from './style.module.scss';
 
 const SampleSelectPlan = ({ loading, intl: { formatMessage } }) => {
