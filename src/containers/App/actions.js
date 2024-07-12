@@ -5,6 +5,8 @@ import {
   SET_LOADING,
   GET_COUNTRY_LIST,
   SET_COUNTRY_LIST,
+  SET_STEPNEXT,
+  SET_STEPBACK,
 } from '@containers/App/constants';
 
 export const setLocale = (locale) => ({
@@ -49,4 +51,11 @@ export const getCountryList = (callbackSuccess, callbackFailed) => ({
 export const setCountryList = (countryList) => ({
   type: SET_COUNTRY_LIST,
   countryList,
+});
+export const setStepNext = () => ({
+  type: SET_STEPNEXT,
+});
+
+export const setStepBack = () => ({
+  type: SET_STEPBACK,
 });

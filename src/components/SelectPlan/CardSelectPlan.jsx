@@ -1,8 +1,12 @@
 import { Box, styled, Switch } from '@mui/material';
 // import iconArcade from '@static/images/en.png';
+import ButtonStep from '@components/Button';
+import { useDispatch } from 'react-redux';
+import { setStepBack, setStepNext } from '@containers/App/actions';
 import classes from './csp.module.scss';
 
 const CardSelectPlan = () => {
+  const dispatch = useDispatch();
   const CustomSwitch = styled((props) => <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />)(
     ({ theme }) => ({
       width: 38,
@@ -51,54 +55,67 @@ const CardSelectPlan = () => {
     })
   );
   const isActive = true;
-  return (
-    <Box className={classes.container}>
-      <h1>Select Your Plan</h1>
-      <p>You have the option of monthly or yearly billing</p>
-      {/* List package */}
-      <Box className={classes.listPlan}>
-        <Box className={`${classes.plan} ${isActive ? classes.active : ''}`}>
-          <Box className={classes.icon}>
-            <span>
-              <img src="src/static/images/icon-arcade.svg" alt="icon arcade" />
-            </span>
-          </Box>
-          <Box className={classes.desc}>
-            <h3>Arcade</h3>
-            <span className={classes.price}>$90/yr</span>
-            <span className={classes.free}>2 months free</span>
-          </Box>
-        </Box>
-        <Box className={classes.plan}>
-          <Box className={classes.icon}>
-            <span>
-              <img src="src/static/images/icon-advanced.svg" alt="icon arcade" />
-            </span>
-          </Box>
-          <Box className={classes.desc}>
-            <h3>Advanced</h3>
-            <span className={classes.price}>$120/yr</span>
-            <span className={classes.free}>2 months free</span>
-          </Box>
-        </Box>
-        <Box className={classes.plan}>
-          <Box className={classes.icon}>
-            <span>
-              <img src="src/static/images/icon-pro.svg" alt="icon arcade" />
-            </span>
-          </Box>
-          <Box className={classes.desc}>
-            <h3>Pro</h3>
-            <span className={classes.price}>$150/yr</span>
-            <span className={classes.free}>2 months free</span>
-          </Box>
-        </Box>
-      </Box>
 
-      <Box className={classes.switch}>
-        Montly <CustomSwitch /> Yearly
+  const handleBack = () => {
+    dispatch(setStepBack());
+  };
+  const handleNext = () => {
+    dispatch(setStepNext());
+  };
+  return (
+    <>
+      <Box className={classes.container}>
+        <h1>Select Your Plan</h1>
+        <p>You have the option of monthly or yearly billing</p>
+        {/* List package */}
+        <Box className={classes.listPlan}>
+          <Box className={`${classes.plan} ${isActive ? classes.active : ''}`}>
+            <Box className={classes.icon}>
+              <span>
+                <img src="src/static/images/icon-arcade.svg" alt="icon arcade" />
+              </span>
+            </Box>
+            <Box className={classes.desc}>
+              <h3>Arcade</h3>
+              <span className={classes.price}>$90/yr</span>
+              <span className={classes.free}>2 months free</span>
+            </Box>
+          </Box>
+          <Box className={classes.plan}>
+            <Box className={classes.icon}>
+              <span>
+                <img src="src/static/images/icon-advanced.svg" alt="icon arcade" />
+              </span>
+            </Box>
+            <Box className={classes.desc}>
+              <h3>Advanced</h3>
+              <span className={classes.price}>$120/yr</span>
+              <span className={classes.free}>2 months free</span>
+            </Box>
+          </Box>
+          <Box className={classes.plan}>
+            <Box className={classes.icon}>
+              <span>
+                <img src="src/static/images/icon-pro.svg" alt="icon arcade" />
+              </span>
+            </Box>
+            <Box className={classes.desc}>
+              <h3>Pro</h3>
+              <span className={classes.price}>$150/yr</span>
+              <span className={classes.free}>2 months free</span>
+            </Box>
+          </Box>
+        </Box>
+
+        <Box className={classes.switch}>
+          Montly <CustomSwitch /> Yearly
+        </Box>
       </Box>
-    </Box>
+      <div className={classes.button}>
+        <ButtonStep message="button_goback" click={handleBack} />
+        <ButtonStep message="button_step" click={handleNext} />
+      </div>
+    </>
   );
 };
 

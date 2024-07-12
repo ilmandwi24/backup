@@ -4,16 +4,17 @@ import { createStructuredSelector } from 'reselect';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { Skeleton } from '@mui/material';
 
-import { selectLoading } from '@containers/App/selectors';
+import { selectLoading, selectStep } from '@containers/App/selectors';
 
 import Sidebar from '@components/Sidebar';
-import classes from './style.module.scss';
 import AddOns from '@components/Add-Ons';
 import PersonalInfo from '@components/PersonalInfo';
 import CardSelectPlan from '@components/SelectPlan/CardSelectPlan';
 import CountPayment from '@components/CountPayment';
+import classes from './style.module.scss';
+import ButtonStep from '@components/Button';
 
-const Home = ({ loading, intl: { formatMessage } }) => {
+const Home = ({ loading, intl: { formatMessage }, step }) => {
   if (loading) {
     return (
       <div className={classes.wrapper}>
@@ -22,13 +23,24 @@ const Home = ({ loading, intl: { formatMessage } }) => {
       </div>
     );
   }
+  let bodyValue;
+
+  if (step === 1) {
+    bodyValue = <PersonalInfo />;
+  }
+  if (step === 2) {
+    bodyValue = <CardSelectPlan />;
+  }
+  if (step === 3) {
+    bodyValue = <AddOns />;
+  }
+  if (step === 4) {
+    bodyValue = <CountPayment />;
+  }
   return (
     <div className={classes.wrapper}>
       <Sidebar />
-      <PersonalInfo />
-      {/* <CardSelectPlan />
-      <AddOns />
-      <CountPayment /> */}
+      <div>{bodyValue}</div>
     </div>
   );
 };
@@ -36,10 +48,12 @@ const Home = ({ loading, intl: { formatMessage } }) => {
 Home.propTypes = {
   loading: PropTypes.bool,
   intl: PropTypes.object,
+  step: PropTypes.number,
 };
 
 const mapStateToProps = createStructuredSelector({
   loading: selectLoading,
+  step: selectStep,
 });
 
 export default injectIntl(connect(mapStateToProps)(Home));
