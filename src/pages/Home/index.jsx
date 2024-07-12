@@ -6,9 +6,12 @@ import { Skeleton } from '@mui/material';
 
 import { selectLoading } from '@containers/App/selectors';
 
-import AddOns from '@components/Add-Ons';
 import Sidebar from '@components/Sidebar';
 import classes from './style.module.scss';
+import AddOns from '@components/Add-Ons';
+import PersonalInfo from '@components/PersonalInfo';
+import CardSelectPlan from '@components/SelectPlan/CardSelectPlan';
+import CountPayment from '@components/CountPayment';
 
 const Home = ({ loading, intl: { formatMessage } }) => {
   if (loading) {
@@ -22,6 +25,10 @@ const Home = ({ loading, intl: { formatMessage } }) => {
   return (
     <div className={classes.wrapper}>
       <Sidebar />
+      <PersonalInfo />
+      {/* <CardSelectPlan />
+      <AddOns />
+      <CountPayment /> */}
     </div>
   );
 };
