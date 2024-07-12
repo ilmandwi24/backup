@@ -5,6 +5,9 @@ import {
   SET_LOADING,
   GET_COUNTRY_LIST,
   SET_COUNTRY_LIST,
+  SET_YEARLY_SELECT_PLAN,
+  SET_STEPNEXT,
+  SET_STEPBACK,
 } from '@containers/App/constants';
 
 export const setLocale = (locale) => ({
@@ -49,4 +52,16 @@ export const getCountryList = (callbackSuccess, callbackFailed) => ({
 export const setCountryList = (countryList) => ({
   type: SET_COUNTRY_LIST,
   countryList,
+});
+
+export const updateYearlySelectPlan = (yearly) => ({
+  type: SET_YEARLY_SELECT_PLAN,
+  yearly,
+});
+export const setStepNext = () => ({
+  type: SET_STEPNEXT,
+});
+
+export const setStepBack = () => ({
+  type: SET_STEPBACK,
 });

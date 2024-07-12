@@ -6,24 +6,25 @@ import StepContent from '@mui/material/StepContent';
 
 import Typography from '@mui/material/Typography';
 
+import { FormattedMessage } from 'react-intl';
 import classes from './style.module.scss';
 
 const steps = [
   {
     label: 'STEP 1',
-    description: `YOUR INFO`,
+    description: `app_your_information`,
   },
   {
     label: 'STEP 2',
-    description: 'SELECT PLAN',
+    description: 'app_select_plan',
   },
   {
     label: 'STEP 3',
-    description: `ADD-ONS`,
+    description: `app_add_ons`,
   },
   {
     label: 'STEP 4',
-    description: `SUMMARY`,
+    description: `app_summary`,
   },
 ];
 
@@ -31,13 +32,13 @@ const Sidebar = () => (
   <div className={classes.sidebar}>
     <Box>
       <Stepper orientation="vertical">
-        {steps.map((step, index) => (
+        {steps.map((step) => (
           <Step key={step.label}>
-            <StepLabel optional={index === 3 ? <Typography variant="caption">Last step</Typography> : null}>
-              {step.label}
-            </StepLabel>
+            <StepLabel>{step.label}</StepLabel>
             <StepContent>
-              <Typography>{step.description}</Typography>
+              <Typography>
+                <FormattedMessage id={step.description} />
+              </Typography>
             </StepContent>
           </Step>
         ))}

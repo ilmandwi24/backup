@@ -1,6 +1,5 @@
 .container {
-  background-color: rgb(252, 248, 241);
-  max-width: 345px;
+  max-width: 500px;
   padding: 1.5rem 1.5rem 1rem 1.5rem;
   display: flex;
   flex-direction: column;
@@ -15,17 +14,17 @@
   }
   .listPlan {
     margin: 0;
-    
+
     // background-color: aquamarine;
 
     .plan {
       margin-bottom: 1rem;
       padding: 1rem 1rem 1rem 1rem;
-    //   background-color: blanchedalmond;
+      //   background-color: blanchedalmond;
       border: 1px hsl(229, 24%, 87%) solid;
       border-radius: 7px;
       display: flex;
-    //   max-width: 95.5%;
+      //   max-width: 95.5%;
       .icon {
         flex-basis: 45px;
       }
@@ -41,7 +40,7 @@
           display: block;
           color: gray;
           line-height: 1.5;
-          font-size: 15px;
+          font-size: 14px;
         }
         .free {
           display: block;
@@ -53,6 +52,12 @@
 
     .active {
       border: 1px hsl(213, 96%, 18%) solid;
+      background-color: hsl(230, 100%, 99%);
+    }
+
+    .plan:hover {
+      background-color: hsl(230, 100%, 99%);
+      cursor: pointer;
     }
 
     .combined-class {
@@ -72,11 +77,16 @@
     margin-bottom: 15px;
     // background-color:red;
   }
+
+  .buttonStep {
+    @include directionX;
+    justify-content: space-between;
+  }
 }
 
 @include apply-at-xxl-size {
   .container {
-    max-width: 450px;   
+    max-width: 450px;
     // flex-direction: row;
     padding: 0;
     p {
@@ -84,15 +94,15 @@
       font-size: 15px;
       color: gray;
       font-weight: 500;
-      margin-top:10px;
+      margin-top: 10px;
     }
     .listPlan {
-      gap:10px;
+      gap: 5px;
       display: flex;
       flex-wrap: wrap;
-      margin-top: 20px ;
-      .plan{
-        padding: 20px 15px 0 15px;
+      margin-top: 20px;
+      .plan {
+        padding: 20px 10px 0 10px;
         min-width: 100px;
         flex-direction: column;
         gap: 25px;
@@ -100,4 +110,10 @@
       }
     }
   }
+}
+.button{
+  @include directionX;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
 }
