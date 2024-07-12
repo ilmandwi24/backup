@@ -42,9 +42,9 @@ export default {
   app_plan_pro: 'Pro',
   app_plan_monthly: 'Bulanan',
   app_plan_yearly: 'Tahunan',
-  app_arcade_price: 'Rp9/bln',
-  app_advanced_price: 'Rp12/bln',
-  app_pro_price: 'Rp15/bln',
+  app_arcade_price: 'Rp 126.000/bln',
+  app_advanced_price: 'Rp 168.000/bln',
+  app_pro_price: 'Rp 210.000/bln',
   app_2months: '2 bulan gratis',
 
   // Komponen Pilih Tambahan
