@@ -50,6 +50,9 @@ export default {
   app_arcade_price: '$9/mo',
   app_advanced_price: '$12/mo',
   app_pro_price: '$15/mo',
+  app_arcade_price_yearly: '$90/yr',
+  app_advanced_price_yearly: '$120/yr',
+  app_pro_price_yearly: '$150/yr',
   app_2months: '2 months free',
 
   // Pick Add-ons Component
