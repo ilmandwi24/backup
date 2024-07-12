@@ -4,7 +4,7 @@ import { useState } from 'react';
 const CountPayment = () => {
   const [format, setFormat] = useState('month');
   return (
-    <>
+    <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
       <Card sx={{ paddingY: '1rem', backgroundColor: 'hsl(217, 100%, 97%)', boxShadow: 'none' }}>
         <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -55,7 +55,7 @@ const CountPayment = () => {
           +$20/{format === 'month' ? 'mo' : 'yr'}
         </Typography>
       </Box>
-    </>
+    </Box>
   );
 };
 
