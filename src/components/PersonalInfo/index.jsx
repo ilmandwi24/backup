@@ -133,7 +133,7 @@ const PersonalInfo = ({ intl: { formatMessage } }) => {
           />
 
           <div className={classes.personalButton}>
-            <ButtonStep message="button_step" click={handleNextButton} />
+            <ButtonStep message="button_nextstep" click={handleNextButton} typevariant="contained" />
           </div>
         </form>
       </div>

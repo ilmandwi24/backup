@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import { Skeleton } from '@mui/material';
 
 import { selectLoading, selectStep } from '@containers/App/selectors';
@@ -12,9 +12,8 @@ import PersonalInfo from '@components/PersonalInfo';
 import CardSelectPlan from '@components/SelectPlan/CardSelectPlan';
 import CountPayment from '@components/CountPayment';
 import classes from './style.module.scss';
-import ButtonStep from '@components/Button';
 
-const Home = ({ loading, intl: { formatMessage }, step }) => {
+const Home = ({ loading, step }) => {
   if (loading) {
     return (
       <div className={classes.wrapper}>
@@ -47,7 +46,6 @@ const Home = ({ loading, intl: { formatMessage }, step }) => {
 
 Home.propTypes = {
   loading: PropTypes.bool,
-  intl: PropTypes.object,
   step: PropTypes.number,
 };
 

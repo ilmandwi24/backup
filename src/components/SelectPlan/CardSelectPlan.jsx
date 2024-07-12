@@ -7,7 +7,8 @@ import { useDispatch } from 'react-redux';
 import { setStepBack, setStepNext } from '@containers/App/actions';
 import classes from './csp.module.scss';
 
-const CardSelectPlan = () => {
+const CardSelectPlan = ({ intl: { formatMessage } }) => {
+  const dispatch = useDispatch();
   const CustomSwitch = styled((props) => <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />)(
     ({ theme }) => ({
       width: 38,
@@ -112,15 +113,10 @@ const CardSelectPlan = () => {
           {/* TODO:: SWITCH SELECT PLAN CHANGED */}
           {formatMessage({ id: 'app_plan_monthly' })} <CustomSwitch /> {formatMessage({ id: 'app_plan_yearly' })}
         </Box>
-
-        <Box className={classes.buttonStep}>
-          <ButtonStep message={formatMessage({ id: 'button_goback' })} />
-          <ButtonStep message={formatMessage({ id: 'button_nextstep' })} typevariant="contained" />
-        </Box>
       </Box>
       <div className={classes.button}>
-        <ButtonStep message="button_goback" click={handleBack} />
-        <ButtonStep message="button_step" click={handleNext} />
+        <ButtonStep message={formatMessage({ id: 'button_goback' })} click={handleBack} />
+        <ButtonStep message={formatMessage({ id: 'button_nextstep' })} typevariant="contained" click={handleNext} />
       </div>
     </>
   );

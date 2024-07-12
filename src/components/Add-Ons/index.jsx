@@ -25,7 +25,7 @@ const AddOns = () => {
       </div>
       <div className={classes.button}>
         <ButtonStep message="button_goback" click={handleBack} />
-        <ButtonStep message="button_step" click={handleNext} />
+        <ButtonStep message="button_nextstep" click={handleNext} typevariant="contained" />
       </div>
     </>
   );
