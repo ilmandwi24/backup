@@ -17,7 +17,7 @@ const themeStyles = createTheme({
     MuiCssBaseline: {
       styleOverrides: `
         @font-face {
-          font-family: 'Ubuntu';
+          font-family: 'Ubuntu, Arial, sans-serif';
           font-style: normal;
           font-display: swap;
           font-weight: 400;
