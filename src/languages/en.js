@@ -21,6 +21,11 @@ export default {
   app_step_3: 'Step 3',
   app_step_4: 'Step 4',
 
+  app_step_description_1: 'YOUR INFO',
+  app_step_description_2: 'SELECT PLAN',
+  app_step_description_3: 'ADD-ONS',
+  app_step_description_4: 'SUMMARY',
+
   // Step Information
   app_your_information: 'Your Info',
   app_select_plan: 'Select Plan',
@@ -45,6 +50,9 @@ export default {
   app_arcade_price: '$9/mo',
   app_advanced_price: '$12/mo',
   app_pro_price: '$15/mo',
+  app_arcade_price_yearly: '$90/yr',
+  app_advanced_price_yearly: '$120/yr',
+  app_pro_price_yearly: '$150/yr',
   app_2months: '2 months free',
 
   // Pick Add-ons Component

@@ -2,9 +2,9 @@ import ButtonStep from '@components/Button';
 import { Box, Card, CardContent, Divider, Typography } from '@mui/material';
 import { useState } from 'react';
 
-import classes from './style.module.scss';
 import { useDispatch } from 'react-redux';
 import { setStepBack } from '@containers/App/actions';
+import classes from './style.module.scss';
 
 const CountPayment = () => {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const CountPayment = () => {
     console.log('confirm');
   };
   return (
-    <>
+    <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
       <Card
         sx={{
           paddingY: '1rem',
@@ -77,9 +77,9 @@ const CountPayment = () => {
       </Box>
       <div className={classes.button}>
         <ButtonStep message="button_goback" click={handleBack} />
-        <ButtonStep message="button_confirm" click={handleConfirm} />
+        <ButtonStep message="button_confirm" click={handleConfirm} typevariant="contained" />
       </div>
-    </>
+    </Box>
   );
 };
 

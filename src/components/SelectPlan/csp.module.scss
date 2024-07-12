@@ -40,7 +40,7 @@
           display: block;
           color: gray;
           line-height: 1.5;
-          font-size: 15px;
+          font-size: 14px;
         }
         .free {
           display: block;
@@ -52,6 +52,12 @@
 
     .active {
       border: 1px hsl(213, 96%, 18%) solid;
+      background-color: hsl(230, 100%, 99%);
+    }
+
+    .plan:hover {
+      background-color: hsl(230, 100%, 99%);
+      cursor: pointer;
     }
 
     .combined-class {
@@ -91,12 +97,12 @@
       margin-top: 10px;
     }
     .listPlan {
-      gap: 10px;
+      gap: 5px;
       display: flex;
       flex-wrap: wrap;
       margin-top: 20px;
       .plan {
-        padding: 20px 15px 0 15px;
+        padding: 20px 10px 0 10px;
         min-width: 100px;
         flex-direction: column;
         gap: 25px;
