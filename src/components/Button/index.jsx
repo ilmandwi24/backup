@@ -3,10 +3,14 @@ import PropTypes from 'prop-types';
 
 import { FormattedMessage } from 'react-intl';
 
-const ButtonStep = ({ click, message }) => (
+const ButtonStep = ({ click, message, typevariant }) => (
   <Button
-    variant="contained"
-    sx={{ textTransform: 'none', backgroundColor: 'hsl(213, 71%, 31%)' }}
+    variant={typevariant}
+    sx={{
+      textTransform: 'none',
+      backgroundColor: typevariant === 'contained' ? 'hsl(213, 71%, 31%)' : '',
+      color: typevariant === 'contained' ? 'white' : 'gray',
+    }}
     onClick={click}
     type="submit"
     disableRipple
@@ -18,6 +22,7 @@ const ButtonStep = ({ click, message }) => (
 ButtonStep.propTypes = {
   click: PropTypes.func,
   message: PropTypes.string,
+  typevariant: PropTypes.string,
 };
 
 export default ButtonStep;

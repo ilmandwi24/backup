@@ -1,12 +1,13 @@
 import { Box, styled, Switch } from '@mui/material';
+import PropTypes from 'prop-types';
 // import iconArcade from '@static/images/en.png';
 import ButtonStep from '@components/Button';
+import { injectIntl } from 'react-intl';
 import { useDispatch } from 'react-redux';
 import { setStepBack, setStepNext } from '@containers/App/actions';
 import classes from './csp.module.scss';
 
 const CardSelectPlan = () => {
-  const dispatch = useDispatch();
   const CustomSwitch = styled((props) => <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />)(
     ({ theme }) => ({
       width: 38,
@@ -65,8 +66,8 @@ const CardSelectPlan = () => {
   return (
     <>
       <Box className={classes.container}>
-        <h1>Select Your Plan</h1>
-        <p>You have the option of monthly or yearly billing</p>
+        <h1>{formatMessage({ id: 'app_select_your_plan' })}</h1>
+        <p>{formatMessage({ id: 'app_select_plan_description' })}</p>
         {/* List package */}
         <Box className={classes.listPlan}>
           <Box className={`${classes.plan} ${isActive ? classes.active : ''}`}>
@@ -76,9 +77,9 @@ const CardSelectPlan = () => {
               </span>
             </Box>
             <Box className={classes.desc}>
-              <h3>Arcade</h3>
-              <span className={classes.price}>$90/yr</span>
-              <span className={classes.free}>2 months free</span>
+              <h3>{formatMessage({ id: 'app_plan_arcade' })}</h3>
+              <span className={classes.price}>{formatMessage({ id: 'app_arcade_price' })}</span>
+              <span className={classes.free}>{formatMessage({ id: 'app_2months' })}</span>
             </Box>
           </Box>
           <Box className={classes.plan}>
@@ -88,9 +89,9 @@ const CardSelectPlan = () => {
               </span>
             </Box>
             <Box className={classes.desc}>
-              <h3>Advanced</h3>
-              <span className={classes.price}>$120/yr</span>
-              <span className={classes.free}>2 months free</span>
+              <h3>{formatMessage({ id: 'app_plan_advanced' })}</h3>
+              <span className={classes.price}>{formatMessage({ id: 'app_advanced_price' })}</span>
+              <span className={classes.free}>{formatMessage({ id: 'app_2months' })}</span>
             </Box>
           </Box>
           <Box className={classes.plan}>
@@ -100,15 +101,21 @@ const CardSelectPlan = () => {
               </span>
             </Box>
             <Box className={classes.desc}>
-              <h3>Pro</h3>
-              <span className={classes.price}>$150/yr</span>
-              <span className={classes.free}>2 months free</span>
+              <h3>{formatMessage({ id: 'app_plan_pro' })}</h3>
+              <span className={classes.price}>{formatMessage({ id: 'app_pro_price' })}</span>
+              <span className={classes.free}>{formatMessage({ id: 'app_2months' })}</span>
             </Box>
           </Box>
         </Box>
 
         <Box className={classes.switch}>
-          Montly <CustomSwitch /> Yearly
+          {/* TODO:: SWITCH SELECT PLAN CHANGED */}
+          {formatMessage({ id: 'app_plan_monthly' })} <CustomSwitch /> {formatMessage({ id: 'app_plan_yearly' })}
+        </Box>
+
+        <Box className={classes.buttonStep}>
+          <ButtonStep message={formatMessage({ id: 'button_goback' })} />
+          <ButtonStep message={formatMessage({ id: 'button_nextstep' })} typevariant="contained" />
         </Box>
       </Box>
       <div className={classes.button}>
@@ -119,4 +126,8 @@ const CardSelectPlan = () => {
   );
 };
 
-export default CardSelectPlan;
+CardSelectPlan.propTypes = {
+  intl: PropTypes.object,
+};
+
+export default injectIntl(CardSelectPlan);
