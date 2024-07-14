@@ -55,9 +55,9 @@ export const setCountryList = (countryList) => ({
   countryList,
 });
 
-export const updateYearlySelectPlan = (yearly) => ({
+export const updateYearlySelectPlan = (biling) => ({
   type: UPDATE_YEARLY_SELECT_PLAN,
-  yearly,
+  biling,
 });
 
 export const setPackageSelectPlan = (paket) => ({
