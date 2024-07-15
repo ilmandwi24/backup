@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import Feedback from '@components/Feedback';
-import { setStep, setStepBack } from '@containers/App/actions';
+import { setSidebarStep, setStepBack } from '@containers/App/actions';
 import { selectSelectPlan } from '@containers/App/selectors';
 import { countTotalPrice } from '@utils/countTotalPrice';
 
@@ -49,7 +49,7 @@ const CountPayment = () => {
                 component="a"
                 color="gray"
                 href="#"
-                onClick={() => dispatch(setStep(2))}
+                onClick={() => dispatch(setSidebarStep(2))}
                 sx={{ '&:hover': { color: 'hsl(243, 73%, 58%)' }, cursor: 'pointer' }}
               >
                 Change
