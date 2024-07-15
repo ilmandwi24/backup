@@ -9,6 +9,7 @@ import {
   SET_YEARLY_SELECT_PLAN,
   SET_STEPNEXT,
   SET_STEPBACK,
+  SET_STEP,
 } from '@containers/App/constants';
 
 export const initialState = {
@@ -56,6 +57,9 @@ const appReducer = (state = initialState, action) =>
         break;
       case SET_STEPBACK:
         draft.step -= 1;
+        break;
+      case SET_STEP:
+        draft.step = action.step;
         break;
     }
   });
