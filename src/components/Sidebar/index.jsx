@@ -3,10 +3,16 @@ import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import StepContent from '@mui/material/StepContent';
+import Button from '@mui/material/Button';
 
 import Typography from '@mui/material/Typography';
 
+import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
+import { createStructuredSelector } from 'reselect';
+import { selectStep } from '@containers/App/selectors';
+import { connect, useDispatch } from 'react-redux';
+import { setSidebarStep } from '@containers/App/actions';
 import classes from './style.module.scss';
 
 const steps = [
@@ -28,23 +34,39 @@ const steps = [
   },
 ];
 
-const Sidebar = () => (
-  <div className={classes.sidebar}>
-    <Box>
-      <Stepper orientation="vertical">
-        {steps.map((step) => (
-          <Step key={step.label}>
-            <StepLabel>{step.label}</StepLabel>
-            <StepContent>
-              <Typography>
-                <FormattedMessage id={step.description} />
-              </Typography>
-            </StepContent>
-          </Step>
-        ))}
-      </Stepper>
-    </Box>
-  </div>
-);
+const Sidebar = ({ step }) => {
+  const dispatch = useDispatch();
 
-export default Sidebar;
+  const handleStep = (stepnum) => {
+    dispatch(setSidebarStep(stepnum));
+  };
+  return (
+    <div className={classes.sidebar}>
+      <Box>
+        <Stepper orientation="vertical" activeStep={step - 1}>
+          {steps.map((sidebarStep, index) => (
+            <Step key={sidebarStep.label}>
+              <StepLabel>
+                <Button onClick={() => handleStep(index + 1)}>{sidebarStep.label}</Button>
+              </StepLabel>
+              <StepContent>
+                <Typography>
+                  <FormattedMessage id={sidebarStep.description} />
+                </Typography>
+              </StepContent>
+            </Step>
+          ))}
+        </Stepper>
+      </Box>
+    </div>
+  );
+};
+
+Sidebar.propTypes = {
+  step: PropTypes.number,
+};
+const mapStateToProps = createStructuredSelector({
+  step: selectStep,
+});
+
+export default connect(mapStateToProps)(Sidebar);

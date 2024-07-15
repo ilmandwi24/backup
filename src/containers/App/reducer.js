@@ -9,6 +9,8 @@ import {
   SET_YEARLY_SELECT_PLAN,
   SET_STEPNEXT,
   SET_STEPBACK,
+  SET_ADDONS,
+  SET_SIDEBARSTEP,
 } from '@containers/App/constants';
 
 export const initialState = {
@@ -26,6 +28,7 @@ export const initialState = {
     tahunan: false,
   },
   step: 1,
+  addOns: [],
 };
 
 export const storedKey = ['locale', 'theme'];
@@ -56,6 +59,16 @@ const appReducer = (state = initialState, action) =>
         break;
       case SET_STEPBACK:
         draft.step -= 1;
+        break;
+      case SET_ADDONS:
+        if (action.isAdding !== false) {
+          draft.addOns.push({ addons: action.addons, price: action.price });
+        } else {
+          draft.addOns = draft.addOns.filter((item) => item.addons !== action.addons);
+        }
+        break;
+      case SET_SIDEBARSTEP:
+        draft.step = action.step;
         break;
     }
   });
