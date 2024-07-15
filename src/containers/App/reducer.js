@@ -9,6 +9,7 @@ import {
   UPDATE_YEARLY_SELECT_PLAN,
   SET_STEPNEXT,
   SET_STEPBACK,
+  SET_INFO,
   SET_PACKAGE_SELECT_PLAN,
   SET_ADDONS,
   SET_SIDEBARSTEP,
@@ -37,10 +38,15 @@ export const initialState = {
     lang_price_yearly: '',
   },
   step: 1,
+  info: {
+    name: '',
+    email: '',
+    phone: '',
+  },
   addOns: [],
 };
 
-export const storedKey = ['locale', 'theme'];
+export const storedKey = ['locale', 'theme', 'info'];
 
 const appReducer = (state = initialState, action) =>
   produce(state, (draft) => {
@@ -75,6 +81,9 @@ const appReducer = (state = initialState, action) =>
         break;
       case SET_STEPBACK:
         draft.step -= 1;
+        break;
+      case SET_INFO:
+        draft.info = action.info;
         break;
       case SET_ADDONS:
         if (action.isAdding !== false) {

@@ -80,6 +80,7 @@ export default {
   this_field_is_required: 'Kolom ini wajib diisi',
   email_validation: 'Email harus valid',
   phone_validation: 'Nomor telepon minimal 12 karakter',
+  phone_validation_max: 'Nomor telepon maksimal 15 karakter',
 
   // Penampung
   info_name_placeholder: 'e.g. Stephen King',

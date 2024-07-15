@@ -8,6 +8,7 @@ import {
   UPDATE_YEARLY_SELECT_PLAN,
   SET_STEPNEXT,
   SET_STEPBACK,
+  SET_INFO,
   SET_PACKAGE_SELECT_PLAN,
   SET_ADDONS,
   SET_SIDEBARSTEP,
@@ -72,6 +73,11 @@ export const setStepNext = () => ({
 
 export const setStepBack = () => ({
   type: SET_STEPBACK,
+});
+
+export const setInfo = (info) => ({
+  type: SET_INFO,
+  info,
 });
 
 export const setAddOns = (addons, price, isAdding) => ({
