@@ -1,3 +1,4 @@
+// Tampilan Mobile Responsive width < 1440px
 .container {
   max-width: 500px;
   padding: 1.5rem 1.5rem 1rem 1.5rem;
@@ -84,9 +85,10 @@
   }
 }
 
+// Tampilan Desktop min-width 1440px
 @include apply-at-xxl-size {
   .container {
-    max-width: 450px;
+    min-width: 450px;
     // flex-direction: row;
     padding: 0;
     p {
@@ -101,9 +103,10 @@
       display: flex;
       flex-wrap: wrap;
       margin-top: 20px;
+      justify-content: center;
       .plan {
         padding: 20px 10px 0 10px;
-        min-width: 100px;
+        min-width: 130px;
         flex-direction: column;
         gap: 25px;
         padding-bottom: 10px;

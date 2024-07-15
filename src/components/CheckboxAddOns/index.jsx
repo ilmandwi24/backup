@@ -2,13 +2,23 @@ import PropTypes from 'prop-types';
 import { Checkbox } from '@mui/material';
 
 import { useState } from 'react';
+import { connect, useDispatch } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { selectAddOns } from '@containers/App/selectors';
+import { setAddOns } from '@containers/App/actions';
 import classes from './style.module.scss';
 
-const CheckboxAddOns = ({ addons, description, price }) => {
+const CheckboxAddOns = ({ addons, description, price, addOns }) => {
+  const dispatch = useDispatch();
   const [checked, setChecked] = useState(false);
+  console.log(addOns);
 
   const handleCheckboxChange = () => {
-    setChecked(!checked);
+    setChecked((prevState) => {
+      const newState = !prevState;
+      dispatch(setAddOns(addons, price, newState));
+      return newState;
+    });
   };
   return (
     <div
@@ -33,6 +43,9 @@ CheckboxAddOns.propTypes = {
   addons: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
+  addOns: PropTypes.array.isRequired,
 };
-
-export default CheckboxAddOns;
+const mapStateToProps = createStructuredSelector({
+  addOns: selectAddOns,
+});
+export default connect(mapStateToProps)(CheckboxAddOns);

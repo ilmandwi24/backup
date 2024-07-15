@@ -9,6 +9,9 @@ const Feedback = () => (
       textAlign: 'center',
       height: '100%',
       justifyContent: 'center',
+      alignItems: 'center',
+      width: '70%',
+      margin: '0 auto',
     }}
   >
     <img src="./src/static/images/icon-thank-you.svg" alt="checklist" width={100} style={{ alignSelf: 'center' }} />
