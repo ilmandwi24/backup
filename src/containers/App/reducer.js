@@ -10,6 +10,8 @@ import {
   SET_STEPNEXT,
   SET_STEPBACK,
   SET_PACKAGE_SELECT_PLAN,
+  SET_ADDONS,
+  SET_SIDEBARSTEP,
 } from '@containers/App/constants';
 
 export const initialState = {
@@ -35,6 +37,7 @@ export const initialState = {
     lang_price_yearly: '',
   },
   step: 1,
+  addOns: [],
 };
 
 export const storedKey = ['locale', 'theme'];
@@ -72,6 +75,16 @@ const appReducer = (state = initialState, action) =>
         break;
       case SET_STEPBACK:
         draft.step -= 1;
+        break;
+      case SET_ADDONS:
+        if (action.isAdding !== false) {
+          draft.addOns.push({ addons: action.addons, price: action.price });
+        } else {
+          draft.addOns = draft.addOns.filter((item) => item.addons !== action.addons);
+        }
+        break;
+      case SET_SIDEBARSTEP:
+        draft.step = action.step;
         break;
     }
   });

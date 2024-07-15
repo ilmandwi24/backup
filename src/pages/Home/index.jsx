@@ -24,17 +24,21 @@ const Home = ({ loading, step }) => {
   }
   let bodyValue;
 
-  if (step === 1) {
-    bodyValue = <PersonalInfo />;
-  }
-  if (step === 2) {
-    bodyValue = <CardSelectPlan />;
-  }
-  if (step === 3) {
-    bodyValue = <AddOns />;
-  }
-  if (step === 4) {
-    bodyValue = <CountPayment />;
+  switch (step) {
+    case 1:
+      bodyValue = <PersonalInfo />;
+      break;
+    case 2:
+      bodyValue = <CardSelectPlan />;
+      break;
+    case 3:
+      bodyValue = <AddOns />;
+      break;
+    case 4:
+      bodyValue = <CountPayment />;
+      break;
+    default:
+      bodyValue = <PersonalInfo />;
   }
   return (
     <div className={classes.wrapper}>

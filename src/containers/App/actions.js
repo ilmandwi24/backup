@@ -9,6 +9,8 @@ import {
   SET_STEPNEXT,
   SET_STEPBACK,
   SET_PACKAGE_SELECT_PLAN,
+  SET_ADDONS,
+  SET_SIDEBARSTEP,
 } from '@containers/App/constants';
 
 export const setLocale = (locale) => ({
@@ -70,4 +72,15 @@ export const setStepNext = () => ({
 
 export const setStepBack = () => ({
   type: SET_STEPBACK,
+});
+
+export const setAddOns = (addons, price, isAdding) => ({
+  type: SET_ADDONS,
+  addons,
+  price,
+  isAdding,
+});
+export const setSidebarStep = (step) => ({
+  type: SET_SIDEBARSTEP,
+  step,
 });
