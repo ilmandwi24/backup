@@ -7,10 +7,10 @@ import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { setStepNext } from '@containers/App/actions';
+import { setInfo, setStepNext } from '@containers/App/actions';
 import classes from './style.module.scss';
 
-const PersonalInfo = ({ intl: { formatMessage } }) => {
+const PersonalInfo = ({ intl: { formatMessage }, info }) => {
   const dispatch = useDispatch();
   const schema = yup
     .object()
@@ -21,9 +21,9 @@ const PersonalInfo = ({ intl: { formatMessage } }) => {
         .email(formatMessage({ id: 'email_validation' }))
         .required(formatMessage({ id: 'this_field_is_required' })),
       phone: yup
-        .string()
+        .number('Phone number must be a number')
+        .typeError('Phone number must be a number')
         .min(10, formatMessage({ id: 'phone_validation' }))
-        .max(15, formatMessage({ id: 'phone_validation_max' }))
         .required(formatMessage({ id: 'this_field_is_required' })),
     })
     .required();
@@ -32,7 +32,12 @@ const PersonalInfo = ({ intl: { formatMessage } }) => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = () => {
+  const onSubmit = (data) => {
+    data.phone = data?.phone.toString();
+    if (data.phone.startsWith('62')) {
+      data.phone = data.phone.substring(2);
+    }
+    dispatch(setInfo(data));
     dispatch(setStepNext());
   };
 
@@ -69,7 +74,7 @@ const PersonalInfo = ({ intl: { formatMessage } }) => {
             )}
             name="name"
             control={control}
-            defaultValue=""
+            defaultValue={info?.name || ''}
           />
 
           <Controller
@@ -93,7 +98,7 @@ const PersonalInfo = ({ intl: { formatMessage } }) => {
             )}
             name="email"
             control={control}
-            defaultValue=""
+            defaultValue={info?.email || ''}
           />
 
           <Controller
@@ -117,7 +122,7 @@ const PersonalInfo = ({ intl: { formatMessage } }) => {
                   {...field}
                   size="small"
                   fullWidth
-                  type="number"
+                  type="string"
                   error={!!formState.errors?.phone}
                   placeholder={formatMessage({ id: 'info_phone_placeholder' })}
                 />
@@ -125,7 +130,7 @@ const PersonalInfo = ({ intl: { formatMessage } }) => {
             )}
             name="phone"
             control={control}
-            defaultValue=""
+            defaultValue={`+62${info?.phone}`}
           />
 
           <div className={classes.personalButton}>
@@ -139,6 +144,7 @@ const PersonalInfo = ({ intl: { formatMessage } }) => {
 
 PersonalInfo.propTypes = {
   intl: PropTypes.object,
+  info: PropTypes.object,
 };
 
 export default injectIntl(PersonalInfo);

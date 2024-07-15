@@ -4,7 +4,7 @@ import { createStructuredSelector } from 'reselect';
 import { injectIntl } from 'react-intl';
 import { Skeleton } from '@mui/material';
 
-import { selectLoading, selectStep } from '@containers/App/selectors';
+import { selectInfo, selectLoading, selectStep } from '@containers/App/selectors';
 
 import Sidebar from '@components/Sidebar';
 import AddOns from '@components/Add-Ons';
@@ -13,7 +13,7 @@ import CardSelectPlan from '@components/SelectPlan/CardSelectPlan';
 import CountPayment from '@components/CountPayment';
 import classes from './style.module.scss';
 
-const Home = ({ loading, step }) => {
+const Home = ({ loading, step, info }) => {
   if (loading) {
     return (
       <div className={classes.wrapper}>
@@ -25,7 +25,7 @@ const Home = ({ loading, step }) => {
   let bodyValue;
 
   if (step === 1) {
-    bodyValue = <PersonalInfo />;
+    bodyValue = <PersonalInfo info={info} />;
   }
   if (step === 2) {
     bodyValue = <CardSelectPlan />;
@@ -47,11 +47,13 @@ const Home = ({ loading, step }) => {
 Home.propTypes = {
   loading: PropTypes.bool,
   step: PropTypes.number,
+  info: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({
   loading: selectLoading,
   step: selectStep,
+  info: selectInfo,
 });
 
 export default injectIntl(connect(mapStateToProps)(Home));

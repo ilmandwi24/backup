@@ -85,6 +85,7 @@ export default {
   this_field_is_required: 'This field is required',
   email_validation: 'Email must be a valid',
   phone_validation: 'Phone number must be at least 12',
+  phone_validation_max: 'Phone number must be at most 15',
 
   // Placeholder
   info_name_placeholder: 'e.g. Stephen King',

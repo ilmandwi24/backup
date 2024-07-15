@@ -8,6 +8,7 @@ import {
   SET_YEARLY_SELECT_PLAN,
   SET_STEPNEXT,
   SET_STEPBACK,
+  SET_INFO,
 } from '@containers/App/constants';
 
 export const setLocale = (locale) => ({
@@ -64,4 +65,9 @@ export const setStepNext = () => ({
 
 export const setStepBack = () => ({
   type: SET_STEPBACK,
+});
+
+export const setInfo = (info) => ({
+  type: SET_INFO,
+  info,
 });
