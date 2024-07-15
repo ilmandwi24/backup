@@ -6,12 +6,12 @@ import { injectIntl } from 'react-intl';
 import { selectSelectPlan } from '@containers/App/selectors';
 import { createStructuredSelector } from 'reselect';
 import { connect, useDispatch } from 'react-redux';
-import { updateYearlySelectPlan, setStepBack, setStepNext } from '@containers/App/actions';
-import { useState } from 'react';
+import { updateYearlySelectPlan, setPackageSelectPlan, setStepBack, setStepNext } from '@containers/App/actions';
+// import { useState } from 'react';
 import classes from './csp.module.scss';
 
 const CardSelectPlan = ({ intl: { formatMessage }, selectPlan }) => {
-  const [paket, setPaket] = useState(0);
+  // const [paket, setPaket] = useState(0);
 
   const dispatch = useDispatch();
   const CustomSwitch = styled((props) => <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />)(
@@ -62,6 +62,59 @@ const CardSelectPlan = ({ intl: { formatMessage }, selectPlan }) => {
     })
   );
 
+  const setPackage = (paket) => {
+    switch (paket) {
+      case 'arcade':
+        {
+          const data = {
+            paket: 'arcade',
+            price_dolar_monthly: 9,
+            price_dolar_yearly: 90,
+            price_rupiah_monthly: 126000,
+            price_rupiah_yearly: 1260000,
+            lang_title: 'app_plan_arcade',
+            lang_price_monthly: 'app_arcade_price',
+            lang_price_yearly: 'app_arcade_price_yearly',
+          };
+          dispatch(setPackageSelectPlan(data));
+        }
+        break;
+      case 'advanced':
+        {
+          const data = {
+            paket: 'advanced',
+            price_dolar_monthly: 12,
+            price_dolar_yearly: 120,
+            price_rupiah_monthly: 168000,
+            price_rupiah_yearly: 1680000,
+            lang_title: 'app_plan_advanced',
+            lang_price_monthly: 'app_advanced_price',
+            lang_price_yearly: 'app_advanced_price_yearly',
+          };
+          dispatch(setPackageSelectPlan(data));
+        }
+        break;
+      case 'pro':
+        {
+          const data = {
+            paket: 'pro',
+            price_dolar_monthly: 15,
+            price_dolar_yearly: 150,
+            price_rupiah_monthly: 210000,
+            price_rupiah_yearly: 2100000,
+            lang_title: 'app_plan_pro',
+            lang_price_monthly: 'app_pro_price',
+            lang_price_yearly: 'app_pro_price_yearly',
+          };
+          dispatch(setPackageSelectPlan(data));
+        }
+        break;
+
+      // default:
+      //   break;
+    }
+  };
+
   const handleBack = () => {
     dispatch(setStepBack());
   };
@@ -74,7 +127,11 @@ const CardSelectPlan = ({ intl: { formatMessage }, selectPlan }) => {
       <p>{formatMessage({ id: 'app_select_plan_description' })}</p>
       {/* List package */}
       <Box className={classes.listPlan}>
-        <Box className={`${classes.plan} ${paket === 1 ? classes.active : ''}`} onClick={() => setPaket(1)}>
+        {/* paket 1 */}
+        <Box
+          className={`${classes.plan} ${selectPlan.paket === 'arcade' ? classes.active : ''}`}
+          onClick={() => setPackage('arcade')}
+        >
           <Box className={classes.icon}>
             <span>
               <img src="src/static/images/icon-arcade.svg" alt="icon arcade" />
@@ -90,7 +147,10 @@ const CardSelectPlan = ({ intl: { formatMessage }, selectPlan }) => {
             {selectPlan.tahunan && <span className={classes.free}>{formatMessage({ id: 'app_2months' })}</span>}
           </Box>
         </Box>
-        <Box className={`${classes.plan} ${paket === 2 ? classes.active : ''}`} onClick={() => setPaket(2)}>
+        <Box
+          className={`${classes.plan} ${selectPlan.paket === 'advanced' ? classes.active : ''}`}
+          onClick={() => setPackage('advanced')}
+        >
           <Box className={classes.icon}>
             <span>
               <img src="src/static/images/icon-advanced.svg" alt="icon arcade" />
@@ -106,7 +166,10 @@ const CardSelectPlan = ({ intl: { formatMessage }, selectPlan }) => {
             {selectPlan.tahunan && <span className={classes.free}>{formatMessage({ id: 'app_2months' })}</span>}
           </Box>
         </Box>
-        <Box className={`${classes.plan} ${paket === 3 ? classes.active : ''}`} onClick={() => setPaket(3)}>
+        <Box
+          className={`${classes.plan} ${selectPlan.paket === 'pro' ? classes.active : ''}`}
+          onClick={() => setPackage('pro')}
+        >
           <Box className={classes.icon}>
             <span>
               <img src="src/static/images/icon-pro.svg" alt="icon arcade" />
@@ -126,10 +189,17 @@ const CardSelectPlan = ({ intl: { formatMessage }, selectPlan }) => {
 
       <Box className={classes.switch}>
         {/* TODO:: SWITCH SELECT PLAN CHANGED */}
-        {formatMessage({ id: 'app_plan_monthly' })}{' '}
+        {formatMessage({ id: 'app_plan_monthly' })}
         <CustomSwitch
           checked={selectPlan.tahunan}
-          onChange={() => dispatch(updateYearlySelectPlan(selectPlan.tahunan))}
+          onChange={() =>
+            dispatch(
+              updateYearlySelectPlan({
+                tahunan: !selectPlan.tahunan,
+                lang_biling: !selectPlan.tahunan ? 'app_plan_yearly' : 'app_plan_monthly',
+              })
+            )
+          }
         />
         {formatMessage({ id: 'app_plan_yearly' })}
       </Box>

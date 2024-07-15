@@ -6,10 +6,12 @@ import {
   SET_POPUP,
   SET_LOADING,
   SET_COUNTRY_LIST,
-  SET_YEARLY_SELECT_PLAN,
+  UPDATE_YEARLY_SELECT_PLAN,
   SET_STEPNEXT,
   SET_STEPBACK,
-  SET_STEP,
+  SET_PACKAGE_SELECT_PLAN,
+  SET_ADDONS,
+  SET_SIDEBARSTEP,
 } from '@containers/App/constants';
 
 export const initialState = {
@@ -23,10 +25,19 @@ export const initialState = {
   loading: false,
   countryList: [],
   selectPlan: {
-    paket: 0,
+    paket: '',
     tahunan: false,
+    price_dolar_monthly: 0,
+    price_dolar_yearly: 0,
+    price_rupiah_monthly: 0,
+    price_rupiah_yearly: 0,
+    lang_title: '',
+    lang_biling: '',
+    lang_price_monthly: '',
+    lang_price_yearly: '',
   },
   step: 1,
+  addOns: [],
 };
 
 export const storedKey = ['locale', 'theme'];
@@ -49,8 +60,15 @@ const appReducer = (state = initialState, action) =>
       case SET_COUNTRY_LIST:
         draft.countryList = action.countryList;
         break;
-      case SET_YEARLY_SELECT_PLAN:
-        draft.selectPlan = { ...draft.selectPlan, tahunan: !action.yearly };
+      case UPDATE_YEARLY_SELECT_PLAN:
+        draft.selectPlan = {
+          ...draft.selectPlan,
+          tahunan: action.biling.tahunan,
+          lang_biling: action.biling.lang_biling,
+        };
+        break;
+      case SET_PACKAGE_SELECT_PLAN:
+        draft.selectPlan = { ...draft.selectPlan, ...action.paket };
         break;
       case SET_STEPNEXT:
         draft.step += 1;
@@ -58,7 +76,14 @@ const appReducer = (state = initialState, action) =>
       case SET_STEPBACK:
         draft.step -= 1;
         break;
-      case SET_STEP:
+      case SET_ADDONS:
+        if (action.isAdding !== false) {
+          draft.addOns.push({ addons: action.addons, price: action.price });
+        } else {
+          draft.addOns = draft.addOns.filter((item) => item.addons !== action.addons);
+        }
+        break;
+      case SET_SIDEBARSTEP:
         draft.step = action.step;
         break;
     }

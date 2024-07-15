@@ -1,17 +1,24 @@
 import CheckboxAddOns from '@components/CheckboxAddOns';
+import PropTypes from 'prop-types';
 
 import ButtonStep from '@components/Button';
-import { useDispatch } from 'react-redux';
+import { useDispatch, connect } from 'react-redux';
 import { setStepBack, setStepNext } from '@containers/App/actions';
+import { createStructuredSelector } from 'reselect';
+import { selectAddOns } from '@containers/App/selectors';
 import classes from './style.module.scss';
 
-const AddOns = () => {
+const AddOns = ({ addOns }) => {
   const dispatch = useDispatch();
 
   const handleBack = () => {
     dispatch(setStepBack());
   };
   const handleNext = () => {
+    if (addOns.length === 0) {
+      alert('Please select add-ons');
+      return;
+    }
     dispatch(setStepNext());
   };
   return (
@@ -31,4 +38,10 @@ const AddOns = () => {
   );
 };
 
-export default AddOns;
+AddOns.propTypes = {
+  addOns: PropTypes.array.isRequired,
+};
+const mapStateToProps = createStructuredSelector({
+  addOns: selectAddOns,
+});
+export default connect(mapStateToProps)(AddOns);
