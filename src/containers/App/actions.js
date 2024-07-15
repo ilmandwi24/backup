@@ -5,9 +5,10 @@ import {
   SET_LOADING,
   GET_COUNTRY_LIST,
   SET_COUNTRY_LIST,
-  SET_YEARLY_SELECT_PLAN,
+  UPDATE_YEARLY_SELECT_PLAN,
   SET_STEPNEXT,
   SET_STEPBACK,
+  SET_PACKAGE_SELECT_PLAN,
   SET_ADDONS,
   SET_SIDEBARSTEP,
 } from '@containers/App/constants';
@@ -56,9 +57,14 @@ export const setCountryList = (countryList) => ({
   countryList,
 });
 
-export const updateYearlySelectPlan = (yearly) => ({
-  type: SET_YEARLY_SELECT_PLAN,
-  yearly,
+export const updateYearlySelectPlan = (biling) => ({
+  type: UPDATE_YEARLY_SELECT_PLAN,
+  biling,
+});
+
+export const setPackageSelectPlan = (paket) => ({
+  type: SET_PACKAGE_SELECT_PLAN,
+  paket,
 });
 export const setStepNext = () => ({
   type: SET_STEPNEXT,
