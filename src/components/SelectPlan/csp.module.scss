@@ -85,17 +85,24 @@
   }
 }
 
-.button{
+.buttonContainer{
   position: fixed;
-  @include directionX;
-  justify-content: space-between;
+  
   align-items: center;
   margin-top: 1rem;
   bottom: 0;
   right: 0;
   left: 0 ;
-  padding:12px;
+  padding:12px 0;
+  max-width: 375px;
+  margin: 0 auto;
   background-color: white;
+  .button {
+    // background-color: antiquewhite;
+    @include directionX;
+    justify-content: space-between;
+    padding:0 13px;
+  }
 }
 
 // Tampilan Desktop min-width 1440px
@@ -133,13 +140,27 @@
         padding-bottom: 10px;
       }
     }
-    .button{
+    .buttonContainer {
       position:relative;
-      @include directionX;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 1rem;
+      // background-color: bisque;
+      width: 100%;
+      margin: 0 auto;
+      align-items: center;  
+      // padding: 12px;
+      max-width: 100%;
+      .button{
+        max-width: 100%;
+        display: flex;
+        @include directionX;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 12px;
+        // margin-top: 1rem;
+        // max-width: 375px;
+    
+      }
     }
+   
     
   }
 }

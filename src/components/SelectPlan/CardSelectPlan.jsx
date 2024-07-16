@@ -209,9 +209,11 @@ const CardSelectPlan = ({ intl: { formatMessage }, selectPlan }) => {
         </Box>
       </Box>
 
-      <div className={classes.button}>
-        <ButtonStep message={formatMessage({ id: 'button_goback' })} click={handleBack} />
-        <ButtonStep message={formatMessage({ id: 'button_nextstep' })} typevariant="contained" click={handleNext} />
+      <div className={classes.buttonContainer}>
+        <div className={classes.button}>
+          <ButtonStep message={formatMessage({ id: 'button_goback' })} click={handleBack} />
+          <ButtonStep message={formatMessage({ id: 'button_nextstep' })} typevariant="contained" click={handleNext} />
+        </div>
       </div>
     </Box>
   );
