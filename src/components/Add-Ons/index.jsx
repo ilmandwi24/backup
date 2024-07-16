@@ -6,6 +6,8 @@ import { useDispatch, connect } from 'react-redux';
 import { setStepBack, setStepNext } from '@containers/App/actions';
 import { createStructuredSelector } from 'reselect';
 import { selectAddOns } from '@containers/App/selectors';
+import { Typography } from '@mui/material';
+import { FormattedMessage } from 'react-intl';
 import classes from './style.module.scss';
 
 const AddOns = ({ addOns }) => {
@@ -22,10 +24,14 @@ const AddOns = ({ addOns }) => {
     dispatch(setStepNext());
   };
   return (
-    <>
+    <div className={classes.container}>
       <div className={classes.addons}>
         <h2>Pick add-ons</h2>
-        <p>Add-ons help enhance your gaming experience.</p>
+        <p style={{ margin: 0, marginBottom: '20px' }}>
+          <Typography variant="desc">
+            <FormattedMessage id="app_personal_info_description" />
+          </Typography>
+        </p>
         <CheckboxAddOns addons="Online Service" description="Access to multiplayer games" price="+$1/mo" />
         <CheckboxAddOns addons="Larger storage" description="Extra 1TB of cloud save" price="+$2/mo" />
         <CheckboxAddOns addons="Customizable profile" description="Custom theme on your profile" price="+$2/mo" />
@@ -34,7 +40,7 @@ const AddOns = ({ addOns }) => {
         <ButtonStep message="button_goback" click={handleBack} />
         <ButtonStep message="button_nextstep" click={handleNext} typevariant="contained" />
       </div>
-    </>
+    </div>
   );
 };
 

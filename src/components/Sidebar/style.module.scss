@@ -1,9 +1,46 @@
 .sidebar {
-  max-width: 400px;
-  padding: 50px;
-  background-image: url('/src/static/images/bg-sidebar-desktop.svg');
+  // min-width: 274px;
+  height: 172px;
+  // padding: 50px;
+  background-image: url('/src/static/images/bg-sidebar-mobile.svg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  border-radius: 8px;
+  // border-radius: 8px;
+  .content {
+    padding: 30px 30px;
+    .stepperDesktop {
+      display: none;
+    }
+    .stepperMobile {
+      display: block;
+    }
+
+  }
 }
+@include apply-at-xxl-size {
+  .sidebar {
+    min-width: 274px;
+    min-height: 568px;
+    // padding: 50px;
+    background-image: url('/src/static/images/bg-sidebar-desktop.svg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 8px;
+    .content {
+      padding: 35px 30px;
+      .stepperDesktop {
+        display: block;
+      }
+      .stepperMobile {
+        display: none;
+      }
+  
+    }
+    
+  }
+
+}
+
+

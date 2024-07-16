@@ -1,4 +1,8 @@
 .containerPersonal {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   .formWrapper {
     @include directionY;
   }
@@ -20,10 +24,55 @@
   .personalButton {
     @include directionX;
     justify-content: end;
+    position: fixed;
+    margin-top: 1rem;
+    bottom: 0;
+    right: 0;
+    left: 0 ;
+    padding:12px;
+    background-color: white;
+
   }
 }
 
 .labelControl {
   @include directionX;
   justify-content: space-between;
+}
+
+@include apply-at-xxl-size {
+  .containerPersonal {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .formWrapper {
+      @include directionY;
+    }
+  
+    .formWrapper small {
+      margin-top: -30px;
+    }
+  
+    .formControl {
+      padding-top: 20px;
+    }
+  
+    .formControl form {
+      @include directionY;
+      gap: 10px;
+      padding-bottom: 20px;
+    }
+  
+    .personalButton {
+      @include directionX;
+      justify-content: end;
+      position: relative;
+    }
+  }
+  
+  .labelControl {
+    @include directionX;
+    justify-content: space-between;
+  }
 }

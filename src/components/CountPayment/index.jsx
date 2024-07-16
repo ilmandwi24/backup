@@ -8,6 +8,7 @@ import { setSidebarStep, setStepBack } from '@containers/App/actions';
 import { selectSelectPlan } from '@containers/App/selectors';
 import { countTotalPrice } from '@utils/countTotalPrice';
 
+import { FormattedMessage } from 'react-intl';
 import classes from './style.module.scss';
 
 const CountPayment = () => {
@@ -29,65 +30,76 @@ const CountPayment = () => {
   };
   if (confirm) return <Feedback />;
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
-      <Card
-        sx={{
-          paddingY: '1rem',
-          backgroundColor: 'hsl(217, 100%, 97%)',
-          boxShadow: 'none',
-          width: '500px',
-          marginTop: '1rem',
-        }}
-      >
-        <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Box>
-              <Typography component="p" color="hsl(213, 89%, 18%)" fontWeight="bold">
-                {plan.title} ({tahunan ? 'Monthly' : 'Yearly'})
-              </Typography>
-              <Typography
-                component="a"
-                color="gray"
-                href="#"
-                onClick={() => dispatch(setSidebarStep(2))}
-                sx={{ '&:hover': { color: 'hsl(243, 73%, 58%)' }, cursor: 'pointer' }}
-              >
-                Change
-              </Typography>
-            </Box>
-            <Typography component="p" color="hsl(213, 89%, 18%)" fontWeight="bold">
-              ${plan.price}/{tahunan ? 'mo' : 'yr'}
-            </Typography>
-          </Box>
-          <Divider />
-          {addOns.map((item) => (
+    <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%', justifyContent: 'space-between' }}>
+      <div>
+        <Typography variant="judul">
+          <FormattedMessage id="app_personal_info" />
+        </Typography>
+
+        <p style={{ margin: 0 }}>
+          <Typography variant="desc">
+            <FormattedMessage id="app_personal_info_description" />
+          </Typography>
+        </p>
+        <Card
+          sx={{
+            paddingY: '1rem',
+            backgroundColor: 'hsl(217, 100%, 97%)',
+            boxShadow: 'none',
+            // width: '500px',
+            marginTop: '1rem',
+          }}
+        >
+          <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <Typography component="p" color="gray">
-                {item.title}
-              </Typography>
-              <Typography component="p" color="hsl(213, 89%, 18%)">
-                +${item.price}/{tahunan ? 'mo' : 'yr'}
+              <Box>
+                <Typography component="p" color="hsl(213, 89%, 18%)" fontWeight="bold">
+                  {plan.title} ({tahunan ? 'Monthly' : 'Yearly'})
+                </Typography>
+                <Typography
+                  component="a"
+                  color="gray"
+                  href="#"
+                  onClick={() => dispatch(setSidebarStep(2))}
+                  sx={{ '&:hover': { color: 'hsl(243, 73%, 58%)' }, cursor: 'pointer' }}
+                >
+                  Change
+                </Typography>
+              </Box>
+              <Typography component="p" color="hsl(213, 89%, 18%)" fontWeight="bold">
+                ${plan.price}/{tahunan ? 'mo' : 'yr'}
               </Typography>
             </Box>
-          ))}
-        </CardContent>
-      </Card>
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          marginTop: '0.5rem',
-          padding: '0 1rem',
-        }}
-      >
-        <Typography component="p" color="gray">
-          Total (per {tahunan ? 'month' : 'year'})
-        </Typography>
-        <Typography component="p" color="hsl(243, 73%, 58%)" fontWeight="bold">
-          +${total}/{tahunan ? 'mo' : 'yr'}
-        </Typography>
-      </Box>
+            <Divider />
+            {addOns.map((item) => (
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <Typography component="p" color="gray">
+                  {item.title}
+                </Typography>
+                <Typography component="p" color="hsl(213, 89%, 18%)">
+                  +${item.price}/{tahunan ? 'mo' : 'yr'}
+                </Typography>
+              </Box>
+            ))}
+          </CardContent>
+        </Card>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginTop: '0.5rem',
+            padding: '0 1rem',
+          }}
+        >
+          <Typography component="p" color="gray">
+            Total (per {tahunan ? 'month' : 'year'})
+          </Typography>
+          <Typography component="p" color="hsl(243, 73%, 58%)" fontWeight="bold">
+            +${total}/{tahunan ? 'mo' : 'yr'}
+          </Typography>
+        </Box>
+      </div>
       <div className={classes.button}>
         <ButtonStep message="button_goback" click={handleBack} />
         <ButtonStep message="button_confirm" click={handleConfirm} typevariant="contained" />

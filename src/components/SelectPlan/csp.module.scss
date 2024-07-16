@@ -5,10 +5,8 @@
   display: flex;
   flex-direction: column;
   // height: 500px;
-  h1 {
-    font-size: 24px;
-    margin: 0;
-    padding: 0;
+  h2 {
+    margin: 0 auto;
   }
   p {
     width: 90%;
@@ -75,7 +73,7 @@
     font-size: 14px;
     font-weight: 700;
     margin-top: 30px;
-    margin-bottom: 15px;
+    margin-bottom: 7px;
     background-color: aliceblue;
     padding:0.5rem 0;
     // background-color:red;
@@ -87,29 +85,44 @@
   }
 }
 
+.button{
+  position: fixed;
+  @include directionX;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  bottom: 0;
+  right: 0;
+  left: 0 ;
+  padding:12px;
+  background-color: white;
+}
+
 // Tampilan Desktop min-width 1440px
 @include apply-at-xxl-size {
   .container {
     // min-width: 450px;
     // background-color: antiquewhite;
     // flex-direction: row;
-    width: 100%;
-    height: 100vh;
+    // width: max-content;
+    // height: 100vh; 
     // margin: 0 0.5rem 0 0.5rem;
     // padding: 0;
+    height: 100%;
     justify-content: space-between;
     p {
       width: 100%;
       font-size: 15px;
       color: gray;
       font-weight: 500;
+      
       margin-top: 10px;
     }
     .listPlan {
       gap: 1px;
       display: flex;
       flex-wrap: wrap;
-      margin-top: 20px;
+      margin-top: 2rem;
       justify-content: space-between;
       .plan {
         padding: 20px 10px 0 10px;
@@ -120,11 +133,14 @@
         padding-bottom: 10px;
       }
     }
+    .button{
+      position:relative;
+      @include directionX;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+    }
+    
   }
 }
-.button{
-  @include directionX;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 1rem;
-}
+

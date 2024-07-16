@@ -12,6 +12,10 @@ import classes from './style.module.scss';
 const themeStyles = createTheme({
   typography: {
     fontFamily: 'Ubuntu, Arial, sans-serif',
+    judul: {
+      fontSize: 40,
+      // color: yellow,
+    },
   },
   components: {
     MuiCssBaseline: {

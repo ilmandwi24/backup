@@ -1,4 +1,4 @@
-import { Box, styled, Switch } from '@mui/material';
+import { Box, styled, Switch, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 // import iconArcade from '@static/images/en.png';
 import ButtonStep from '@components/Button';
@@ -124,8 +124,12 @@ const CardSelectPlan = ({ intl: { formatMessage }, selectPlan }) => {
   return (
     <Box className={classes.container}>
       <Box>
-        <h1>{formatMessage({ id: 'app_select_your_plan' })}</h1>
-        <p>{formatMessage({ id: 'app_select_plan_description' })}</p>
+        <Typography variant="judul">{formatMessage({ id: 'app_select_your_plan' })}</Typography>
+        {/* <Typography variant="h1">{formatMessage({ id: 'app_select_your_plan' })}</Typography> */}
+        {/* <h1>{formatMessage({ id: 'app_select_your_plan' })}</h1> */}
+        <p style={{ margin: '5px 0' }}>
+          <Typography variant="desc">{formatMessage({ id: 'app_select_plan_description' })}</Typography>
+        </p>
         {/* List package */}
         <Box className={classes.listPlan}>
           {/* paket 1 */}
